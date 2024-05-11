@@ -20,5 +20,6 @@ export async function shareMeal(formData: FormData) {
 }
 
 export async function deleteMealById(id: string, mealImagePath: string) {
-  deleteMeal(id, mealImagePath);
+  await deleteMeal(id, mealImagePath);
+  redirect("/meals");
 }
