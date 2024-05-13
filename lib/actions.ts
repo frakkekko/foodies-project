@@ -3,9 +3,10 @@
 import { redirect } from "next/navigation";
 
 import { deleteMeal, saveMeal } from "./meals";
-import { MealFormData } from "@/types/types";
+import { FormState, MealFormData } from "@/types/types";
+import { isValidShareMealInputForm } from "@/utils/utils";
 
-export async function shareMeal(formData: FormData) {
+export async function shareMeal(prevState: FormState, formData: FormData): Promise<FormState> {
   const meal: MealFormData = {
     title: formData.get("title") as string,
     summary: formData.get("summary") as string,
@@ -14,6 +15,12 @@ export async function shareMeal(formData: FormData) {
     creator: formData.get("name") as string,
     creator_email: formData.get("email") as string,
   };
+
+  if (!isValidShareMealInputForm(meal)) {
+    return {
+      message: 'Invalid Input',
+    };
+  }
 
   await saveMeal(meal);
   redirect("/meals");

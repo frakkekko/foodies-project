@@ -57,6 +57,10 @@
   background-color: #1f252d;
 }
 
+.form p {
+  color: #fff;
+}
+
 .row {
   display: flex;
   gap: 1rem;
@@ -92,3 +96,5 @@
   background: #a4abb9;
   cursor: default;
 }
+
+

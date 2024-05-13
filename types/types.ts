@@ -41,3 +41,7 @@ export type MealFormData = {
 export type Meal = {};
 
 export type ImageData = { image: StaticImageData; alt: string };
+
+export type FormState = {
+  message: null | 'Invalid Input'
+}
