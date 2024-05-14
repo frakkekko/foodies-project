@@ -3,13 +3,29 @@ import { notFound } from "next/navigation";
 
 import { getMeal } from "@/lib/meals";
 import classes from "./page.module.css";
-import { NextPage } from "next";
+import { Metadata, NextPage, ResolvingMetadata } from "next";
 import { ENVIRONMENT } from "@/config/config";
 import DeleteButtonDev from "@/components/delete-button-dev/delete-button-dev";
 
 type Props = {
   params: { [key: string]: string };
 };
+
+export async function generateMetadata(
+  {params}: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const meal = getMeal(params["mealSlug"]);
+
+  if(!meal) {
+    return {}
+  }
+
+  return {
+    title: meal.title,
+    description: meal.summary
+  }
+}
 
 const MealDetailsPage: NextPage<Props> = ({ params }) => {
   const meal = getMeal(params["mealSlug"]);

@@ -1,8 +1,9 @@
 import MainHeader from "@/components/main-header/main-header";
 import "./globals.css";
 import { FunctionComponent, ReactNode } from "react";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "NextLevel Food",
   description: "Delicious meals, shared by a food-loving community.",
 };

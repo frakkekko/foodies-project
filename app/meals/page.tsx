@@ -4,7 +4,12 @@ import Link from "next/link";
 import classes from "./page.module.css";
 import MealsGrid from "@/components/meals/meals-grid";
 import { getMeals } from "@/lib/meals";
-import { NextPage } from "next";
+import { NextPage, Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'All Meals',
+  description: 'Browse the delicious meals shared by our vibrant community.'
+}
 
 const Meals: FunctionComponent = async () => {
   const meals = await getMeals();
